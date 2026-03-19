@@ -1,40 +1,70 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Cruise
+description: A keyboard-first TUI for managing containers across runtimes.
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: A keyboard-first TUI for managing containers across runtimes. No mouse, no context switching — just your containers and you.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /get-started
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/cruise-org/cruise
+      icon: github
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Badge, Icon } from '@astrojs/starlight/components'
+import Carousel from '../../components/carousel.astro'
 
-## Next steps
+## Why Cruise?
+
+<br />
+<br />
+
+Your terminal deserves better. Container management tools are either too simple or buried in a web UI. Cruise lives where you already work.
+
+<br />
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Live container inspection" icon="magnifier">
+    Real-time stats,  mounts, and more — all without running a single CLI command.
+  </Card>
+  <Card title="Streaming logs" icon="document">
+    Search, and filter logs from any container in real time. Follow mode built in.
+  </Card>
+  <Card title="Artifact lifecycle management" icon="list-format">
+    Browse, pull, tag, and remove images, volumes, and networks from a unified view.
+  </Card>
+  <Card title="Keyboard centric" icon="laptop">
+    Every action is a keypress away. Fully navigable without ever touching a mouse.
+  </Card>
+  <Card title="Vulnerability scanning" icon="warning">
+    Optional Trivy and Grype integration — scan images for CVEs directly from the TUI.
+  </Card>
+  <Card title="Fully configurable" icon="setting">
+    Custom keybinds, colour themes, and runtime behaviour via a simple TOML(soon to be YAML) config file.
+  </Card>
+  <Card title="Event stream" icon="information">
+    Watch live runtime events as they happen — container starts, stops, network connects, and more.
+  </Card>
+  <Card title="Runtime agnostic" icon="puzzle">
+    Docker today, Podman and more on the roadmap. One interface for every container runtime.
+  </Card>
+  <Card title="Zero dependencies" icon="rocket">
+    Single static binary. No runtime, no daemon, no setup. Works anywhere containers run.
+  </Card>
 </CardGrid>
+
+## See it in action
+
+<br />
+<br />
+
+<Carousel images={[
+  { src: "/screenshots/cruise-dashboard.png", alt: "Cruise dashboard view" },
+  { src: "/screenshots/2.png", alt: "Cruise container list" },
+  { src: "/screenshots/3.png", alt: "Cruise log streaming" },
+]} />
+

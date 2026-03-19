@@ -1,0 +1,66 @@
+---
+title: Contributing
+description: How to contribute to Cruise.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components'
+
+Thank you for considering a contribution! We welcome bug reports, feature requests, code, docs, and suggestions.
+
+## Dependencies
+
+- Go
+- Docker (or supported runtime)
+- Trivy / Grype (optional)
+- golangci-lint
+
+## Getting Started
+
+<Steps>
+1. Fork the repository on GitHub
+
+2. Clone your fork: `git clone <your-fork-url>`
+
+3. Create a branch from `dev`: `git checkout -b feat/my-feature dev`
+
+4. Make your changes, format with `gofmt -w .` and lint with `golangci-lint run`
+
+5. Open a PR targeting the `dev` branch
+</Steps>
+
+<Aside type="caution">PRs must target `dev`, not `main`.</Aside>
+
+## Branch Naming
+
+| Type          | Format              |
+|---------------|---------------------|
+| Feature       | `feat/description`  |
+| Bug fix       | `bug/#issue-number` |
+| Docs          | `docs/description`  |
+
+## Commit Messages
+
+Follow the format `<type>: <description>`:
+```
+feat: add podman runtime support
+bug: fix container stop keybind
+docs: update keybinds reference
+```
+
+## Issues
+
+- Search open and closed issues before opening a new one
+- For bugs: include OS, runtime version, logs, and reproduction steps
+- For features: describe the problem and your proposed solution
+
+## Pull Requests
+
+- One change per PR
+- Link the relevant issue
+- Respond to reviewer comments promptly
+
+## Questions?
+
+Use [GitHub Discussions](https://github.com/cruise-org/cruise/discussions) or open an issue with the `question` label.
+
+All contributors are credited in the repository. Thank you!

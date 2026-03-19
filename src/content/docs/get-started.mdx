@@ -1,0 +1,50 @@
+---
+title: Getting Started
+description: Install Cruise and start managing containers from your terminal.
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components'
+
+Welcome to Cruise — a keyboard-first TUI for managing containers across runtimes. Whether you're a developer, DevOps engineer, or sysadmin, Cruise fits into your terminal-centric workflow and makes container management interactive and fast.
+
+## Prerequisites
+
+- A supported container runtime (Docker, with more on the roadmap)
+- Trivy or Grype (optional, for vulnerability scanning)
+
+## Quick Start
+
+<Steps>
+1. **Install Cruise** — see the [installation guide](/install)
+
+2. **Run Cruise** by typing `cruise` in your terminal
+
+3. **Configure your terminal** — set `term = "your-terminal"` in `~/.config/cruise/config.toml`
+
+4. **Explore** — use `tab` to switch pages, `?` for help, `q` to quit
+</Steps>
+
+<Aside type="caution">Setting `term` is highly recommended on a fresh install.</Aside>
+
+## Configuration
+
+Cruise uses a TOML config file. To dump the default config:
+```bash
+cruise dump > ~/.config/cruise/config.toml
+```
+
+See the full [configuration reference](/config) for all available options.
+
+## Why Cruise?
+
+Ever felt that container CLIs are too lengthy or limited? Find yourself running the same commands repeatedly, or writing multiline commands only for a typo to ruin it?
+
+Cruise is a full container management TUI — not just a monitoring service. Unlike lazydocker or docui, Cruise lets you manage and monitor containers, images, volumes, networks, and more from a single keyboard-driven interface. It blends the best of CLI and GUI without the downsides of either.
+
+## Planned Features
+
+- Compose / project management
+- More vulnerability scanners
+- Registry management
+- Image repository browser
+- Alert integration for monitoring

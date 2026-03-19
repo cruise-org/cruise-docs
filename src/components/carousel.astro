@@ -1,0 +1,102 @@
+---
+import { Icon } from '@astrojs/starlight/components'
+const { images } = Astro.props
+---
+
+<div class="carousel">
+  <div class="carousel-track" id="track">
+    {images.map((img, i) => (
+      <div class="carousel-slide" data-index={i}>
+        <img src={img.src} alt={img.alt} />
+      </div>
+    ))}
+  </div>
+  <div class="controls">
+    <button id="prev" aria-label="Previous"><Icon name="left-arrow" /></button>
+    <div class="dots" id="dots">
+      {images.map((_, i) => (
+        <button class={`dot ${i === 0 ? 'active' : ''}`} data-i={i} aria-label={`Slide ${i + 1}`} />
+      ))}
+    </div>
+    <button id="next" aria-label="Next"><Icon name="right-arrow" /></button>
+  </div>
+</div>
+
+<style>
+  .carousel { width: 100%; overflow: hidden; border-radius: 12px; }
+  .carousel-track { display: flex; transition: transform 0.35s ease; }
+  .carousel-slide { min-width: 100%; }
+  .carousel-slide img { width: 100%; display: block; border-radius: 11px; }
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--sl-color-bg-nav);
+  }
+
+  .controls * {
+    margin-top: 0;
+  }
+
+  .controls > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 6px;
+    color: var(--sl-color-text);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    line-height: 0;
+  }
+
+  .controls > button:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent);
+  }
+
+  .dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    padding: 0;
+    background: none;
+    border: 1px solid var(--sl-color-hairline);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .dot.active {
+    background: var(--sl-color-accent);
+    border-color: var(--sl-color-accent);
+  }
+</style>
+
+<script>
+  const track = document.getElementById('track')
+  const dots = document.querySelectorAll('.dot')
+  let cur = 0
+
+  function go(n) {
+    cur = (n + dots.length) % dots.length
+    track.style.transform = `translateX(-${cur * 100}%)`
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur))
+  }
+
+  document.getElementById('prev').addEventListener('click', () => go(cur - 1))
+  document.getElementById('next').addEventListener('click', () => go(cur + 1))
+  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)))
+</script>

@@ -1,0 +1,104 @@
+---
+title: Keybinds
+description: All keybind configuration options for Cruise.
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+All keybinds are configured under the `[keybinds]` section in your config file.
+
+<Aside>Any standard keyboard character can be used as a keybind value.</Aside>
+
+## Global
+
+`[keybinds.global]`
+
+| Key              | Default   | Description                        |
+|------------------|-----------|------------------------------------|
+| `page_finder`    | `tab`     | Open page switcher popup           |
+| `list_up`        | `up`      | Move selection up                  |
+| `list_down`      | `down`    | Move selection down                |
+| `focus_search`   | `/`       | Focus the search input             |
+| `unfocus_search` | `esc`     | Exit search mode                   |
+| `quick_quit`     | `q`       | Quit Cruise                        |
+
+## Containers
+
+`[keybinds.container]`
+
+| Key            | Default   | Description                        |
+|----------------|-----------|------------------------------------|
+| `start`        | `s`       | Start a stopped container          |
+| `stop`         | `t`       | Stop a container                   |
+| `remove`       | `d`       | Remove a container                 |
+| `restart`      | `r`       | Restart a container                |
+| `pause`        | `p`       | Pause a container                  |
+| `unpause`      | `u`       | Unpause a container                |
+| `exec`         | `e`       | Open a shell inside a container    |
+| `show_details` | `enter`   | Show container details             |
+| `exit_details` | `esc`     | Exit details view                  |
+| `port_map`     | `m`       | View port mappings                 |
+
+## Images
+
+`[keybinds.images]`
+
+| Key      | Default | Description                  |
+|----------|---------|------------------------------|
+| `remove` | `r`     | Remove an image              |
+| `prune`  | `d`     | Prune unused images          |
+| `push`   | `p`     | Push image to a registry     |
+| `sync`   | `s`     | Refresh image list           |
+
+## Volumes
+
+`[keybinds.volume]`
+
+| Key            | Default | Description              |
+|----------------|---------|--------------------------|
+| `remove`       | `r`     | Remove a volume          |
+| `prune`        | `p`     | Prune unused volumes     |
+| `show_details` | `enter` | Show volume details      |
+| `exit_details` | `esc`   | Exit details view        |
+
+## Networks
+
+`[keybinds.network]`
+
+| Key            | Default | Description              |
+|----------------|---------|--------------------------|
+| `remove`       | `r`     | Remove a network         |
+| `prune`        | `p`     | Prune unused networks    |
+| `show_details` | `enter` | Show network details     |
+| `exit_details` | `esc`   | Exit details view        |
+
+## Monitoring
+
+`[keybinds.monitoring]`
+
+| Key           | Default | Description               |
+|---------------|---------|---------------------------|
+| `search`      | `/`     | Search monitoring data    |
+| `exit_search` | `esc`   | Exit search mode          |
+| `export`      | `e`     | Export to export dir      |
+
+## Fuzzy Finder
+
+`[keybinds.fzf]`
+
+| Key      | Default | Description                        |
+|----------|---------|------------------------------------|
+| `up`     | `up`    | Move up in results                 |
+| `down`   | `down`  | Move down in results               |
+| `enter`  | `enter` | Select highlighted item            |
+| `exit`   | `esc`   | Exit fuzzy finder                  |
+
+## Vulnerability
+
+`[keybinds.vulnerability]`
+
+| Key              | Default | Description                        |
+|------------------|---------|------------------------------------|
+| `focus_scanner`  | `S`     | Focus the scanners panel           |
+| `focus_list`     | `L`     | Focus the results list             |
+| `export`         | `e`     | Export results to export dir       |

@@ -1,0 +1,37 @@
+---
+title: Styles
+description: Customize the visual appearance of Cruise.
+---
+
+All style options are set under the `[styles]` section.
+
+The default theme is Catppuccin Mocha with Lavender accents.
+
+## Color Reference
+
+| Key                  | Default     | Description                          |
+|----------------------|-------------|--------------------------------------|
+| `text`               | `#cdd6f4`   | Primary text color                   |
+| `subtitle_text`      | `#74c7ec`   | Subtitle text color                  |
+| `subtitle_bg`        | `#313244`   | Subtitle background color            |
+| `unfocused_border`   | `#45475a`   | Border color for unfocused elements  |
+| `focused_border`     | `#b4befe`   | Border color for focused elements    |
+| `help_key_bg`        | `#313244`   | Help key indicator background        |
+| `help_key_text`      | `#1e1e2e`   | Help key indicator text              |
+| `help_desc_text`     | `#6c7086`   | Help description text                |
+| `menu_selected_bg`   | `#b4befe`   | Selected menu item background        |
+| `menu_selected_text` | `#1e1e2e`   | Selected menu item text              |
+| `error_text`         | `#f38ba8`   | Error message text                   |
+| `error_bg`           | `#11111b`   | Error message background             |
+| `popup_border`       | `#74c7ec`   | Popup / dialog border color          |
+| `placeholder_text`   | `#585b70`   | Input placeholder text               |
+| `msg_text`           | `#74c7ec`   | Notification / message text          |
+
+## Example
+```toml
+[styles]
+text = "#cdd6f4"
+focused_border = "#74c7ec"
+menu_selected_bg = "#74c7ec"
+menu_selected_text = "#1e1e2e"
+```

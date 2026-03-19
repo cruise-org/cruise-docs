@@ -1,0 +1,47 @@
+---
+title: Architecture
+description: Internal architecture overview of Cruise.
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+Cruise is built with Go and [Bubble Tea](https://github.com/charmbracelet/bubbletea), following the Elm architecture pattern.
+
+## Stack
+
+| Layer        | Technology                  |
+|--------------|-----------------------------|
+| TUI framework| Bubble Tea                  |
+| Styling      | Lip Gloss                   |
+| Runtime API  | Docker SDK (more planned)   |
+| Config       | TOML via internal parser    |
+| Scanning     | Trivy / Grype (optional)    |
+
+## Directory Structure
+```
+cruise/
+├── cmd/          # CLI entrypoints
+├── internal/
+│   ├── ui/       # Bubble Tea models and views
+│   ├── runtime/  # Runtime interface + Docker impl
+│   ├── config/   # Config parsing and defaults
+│   └── scanner/  # Vulnerability scanner adapters
+└── pkg/          # Shared utilities
+```
+
+## Bubble Tea Model Pattern
+
+Each page in Cruise is a self-contained Bubble Tea model implementing `Init`, `Update`, and `View`:
+```go
+type ContainerPage struct {
+    containers []runtime.Container
+    selected   int
+    // ...
+}
+
+func (m ContainerPage) Init() tea.Cmd { ... }
+func (m ContainerPage) Update(msg tea.Msg) (tea.Model, tea.Cmd) { ... }
+func (m ContainerPage) View() string { ... }
+```
+
+<Aside>All UI state is immutable — `Update` always returns a new model, never mutates in place.</Aside>

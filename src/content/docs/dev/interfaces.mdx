@@ -1,0 +1,69 @@
+---
+title: Interfaces
+description: Go interfaces used across the Cruise codebase.
+---
+
+## Runtime Interface
+
+The core abstraction for container runtime support. All runtime implementations must satisfy this interface, enabling Cruise to support Docker, Podman, and future runtimes behind a single API.
+```go
+type Runtime interface {
+    // Containers
+    ListContainers(ctx context.Context) ([]Container, error)
+    StartContainer(ctx context.Context, id string) error
+    StopContainer(ctx context.Context, id string) error
+    RestartContainer(ctx context.Context, id string) error
+    RemoveContainer(ctx context.Context, id string) error
+    PauseContainer(ctx context.Context, id string) error
+    UnpauseContainer(ctx context.Context, id string) error
+    ExecContainer(ctx context.Context, id string) error
+    InspectContainer(ctx context.Context, id string) (ContainerDetails, error)
+
+    // Images
+    ListImages(ctx context.Context) ([]Image, error)
+    RemoveImage(ctx context.Context, id string) error
+    PullImage(ctx context.Context, ref string) error
+    PushImage(ctx context.Context, ref string) error
+    PruneImages(ctx context.Context) error
+
+    // Volumes
+    ListVolumes(ctx context.Context) ([]Volume, error)
+    RemoveVolume(ctx context.Context, name string) error
+    PruneVolumes(ctx context.Context) error
+    InspectVolume(ctx context.Context, name string) (VolumeDetails, error)
+
+    // Networks
+    ListNetworks(ctx context.Context) ([]Network, error)
+    RemoveNetwork(ctx context.Context, id string) error
+    PruneNetworks(ctx context.Context) error
+    InspectNetwork(ctx context.Context, id string) (NetworkDetails, error)
+
+    // Logs & stats
+    StreamLogs(ctx context.Context, id string) (io.ReadCloser, error)
+    StreamStats(ctx context.Context, id string) (io.ReadCloser, error)
+}
+```
+
+## Scanner Interface
+
+Abstraction for pluggable vulnerability scanners (Trivy, Grype, etc.):
+```go
+type Scanner interface {
+    Name() string
+    Scan(ctx context.Context, image string) ([]Vulnerability, error)
+    Available() bool
+}
+```
+
+## Adding a New Runtime
+
+1. Create a new package under `internal/runtime/`
+2. Implement the `Runtime` interface
+3. Register it in the runtime factory in `internal/runtime/factory.go`
+4. Add config detection logic so Cruise can auto-detect the runtime
+
+## Adding a New Scanner
+
+1. Create a new package under `internal/scanner/`
+2. Implement the `Scanner` interface
+3. Register it in `internal/scanner/registry.go`

@@ -1,0 +1,37 @@
+---
+title: Configuration
+description: Configure Cruise via TOML.
+---
+
+import { Aside } from '@astrojs/starlight/components'
+
+Cruise supports a flexible TOML configuration file for customizing behaviour, themes, and keybinds.
+
+## Config File Location
+
+| Platform      | Path                                  |
+|---------------|---------------------------------------|
+| Linux / macOS | `~/.config/cruise/config.toml`        |
+| Windows       | `C:\Users\<username>\.cruise\config.toml` |
+
+## Dump Default Config
+```bash
+cruise dump > ~/.config/cruise/config.toml
+```
+
+## File Format
+```toml
+[keybinds.global]
+up = "k"
+down = "j"
+```
+
+## Sections
+
+| Section      | Description                              |
+|--------------|------------------------------------------|
+| `[general]`  | Shell, export directory, and runtime     |
+| `[styles]`   | Colors and visual theming                |
+| `[keybinds]` | All keybind customization                |
+
+<Aside>All sections are optional — Cruise falls back to defaults for anything not specified.</Aside>

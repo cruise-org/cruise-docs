@@ -1,0 +1,24 @@
+---
+title: General
+description: General configuration options for Cruise.
+---
+
+General options are set at the top level of the config file.
+
+## Export Directory
+
+Path where exported files and data are saved.
+```toml
+export_dir = "~/cruise-exports"
+```
+
+## Term
+
+Default terminal to use when opening an `exec -it` shell instance inside a container.
+```toml
+term = "kitty"
+```
+
+:::caution
+Highly recommended to set this on a fresh install. Without it, exec sessions may not open correctly.
+:::

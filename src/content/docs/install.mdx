@@ -1,0 +1,70 @@
+---
+title: Installation
+description: Install Cruise on Linux, macOS, or Windows.
+---
+
+import { Tabs, TabItem, Aside } from '@astrojs/starlight/components'
+
+## Package Managers
+
+<Tabs>
+  <TabItem label="Homebrew">
+```bash
+    brew tap cruise-org/homebrew-tap
+    brew install --cask cruise
+```
+  </TabItem>
+  <TabItem label="AUR">
+```bash
+    yay -S cruise-bin
+```
+  </TabItem>
+  <TabItem label="NixOS">
+```nix
+    environment.systemPackages = with pkgs; [
+      cruise
+    ];
+```
+  </TabItem>
+</Tabs>
+
+## Debian / RPM
+
+<Tabs>
+  <TabItem label="Debian / Ubuntu">
+    Download the `.deb` from the [releases page](https://github.com/cruise-org/cruise/releases), then:
+```bash
+    sudo apt install ./path/to/file.deb
+```
+  </TabItem>
+  <TabItem label="Fedora / RHEL">
+    Download the `.rpm` from the [releases page](https://github.com/cruise-org/cruise/releases), then:
+```bash
+    sudo dnf install ./path/to/file.rpm
+```
+  </TabItem>
+</Tabs>
+
+## Archives
+
+Download the latest archive from the [releases page](https://github.com/cruise-org/cruise/releases).
+
+<Tabs>
+  <TabItem label="Linux / macOS">
+```bash
+    tar -xvf ./path/to/file.tar.gz -C /usr/local/bin/
+```
+  </TabItem>
+  <TabItem label="Windows (PowerShell)">
+```powershell
+    Expand-Archive -Path path\to\file.zip -DestinationPath "C:\Program Files\cruise"
+```
+  </TabItem>
+</Tabs>
+
+## Go Install
+```bash
+go install github.com/cruise-org/cruise@latest
+```
+
+<Aside>Requires Go 1.21 or later.</Aside>
